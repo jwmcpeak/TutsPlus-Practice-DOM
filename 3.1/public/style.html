@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.4 - Style</title>
+    <style>
+        .blue-bg {
+            background-color: blue;
+            color: white;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- <ul class="list">
+            <li>This is the first item of the first list.</li>
+            <li>This is the second item of the first list.</li>
+        </ul> -->
+    </div>
+
+    <script>
+        let container = document.getElementById('container'); // HTMLDivElement
+        let ul = document.createElement('ul');
+
+        ul.id = 'first-list';
+        ul.className = 'list';
+
+        let li1 = document.createElement('li');
+        let li2 = document.createElement('li');
+
+        li1.setAttribute('data-record-id', 1);
+        li2.setAttribute('data-record-id', 2);
+
+        let li1RecordId = li1.getAttribute('data-record-id');
+
+        //console.log(typeof li1RecordId);
+
+
+        li1.appendChild(document.createTextNode('This is the first item of the first list.'));
+        li2.appendChild(document.createTextNode('This is the second item of the first list.'));
+
+
+
+        ul.appendChild(li1);
+        ul.appendChild(li2);
+
+
+        container.appendChild(ul);
+
+        ul.className = 'blue-bg';
+
+        ul.classList.add('bold');
+        ul.classList.remove('blue-bg');
+        ul.classList.toggle('bold');
+        ul.classList.toggle('blue-bg');
+
+        console.log(ul.classList.contains('blue-bg'));
+
+
+        // container.style.backgroundColor = 'blue';
+        // container.style.color = 'white';
+
+    </script>
+</body>
+</html>

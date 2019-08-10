@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Manipulating Lists</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body { padding-top: 10px; font-size: 1.4em; }
+        ul { list-style: none; }
+        li { padding: 5px; cursor: pointer; }
+        .active {
+            background-color: #4299e1;
+            color: white;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list">
+                    <li class="active">This is the first item of the first list.</li>
+                    <li>This is the second item of the first list.</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="new-item-text">
+                </div>
+                <button onclick="addItem();">Add Item</button>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        let liElements = document.querySelectorAll('ul.list li');
+
+        function addItem() {
+            let input = document.getElementById('new-item-text');
+            let value = input.value;
+            let ul = document.querySelector('ul.list');
+
+            let li = document.createElement('li');
+            li.appendChild(document.createTextNode(value));
+
+            li.addEventListener('click', liClickHandler);
+
+            ul.appendChild(li);
+
+            input.value = '';
+
+        }
+
+        function deactivate() {
+            let activated = document.querySelector('ul.list li.active');
+
+            activated.classList.remove('active');
+        }
+
+        function liClickHandler(e) {
+            deactivate();
+            e.target.classList.add('active');
+        }
+
+        for (let ii = 0; ii < liElements.length; ii++) {
+            let element = liElements[ii];
+
+            element.addEventListener('click', liClickHandler);
+        }
+
+    </script>
+</body>
+</html>

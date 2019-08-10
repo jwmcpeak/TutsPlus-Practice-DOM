@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Manipulating Lists</title>
+    <style>
+        body { font-size: 1.4em; }
+        ul { list-style: none; }
+        li { padding: 5px; cursor: pointer; }
+        .active {
+            background-color: #4299e1;
+            color: white;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul class="list">
+            <li class="active">This is the first item of the first list.</li>
+            <li>This is the second item of the first list.</li>
+        </ul>
+    </div>
+
+    <script>
+        let liElements = document.querySelectorAll('ul.list li');
+
+        function deactivate() {
+            let activated = document.querySelector('ul.list li.active');
+
+            activated.classList.remove('active');
+        }
+
+        for (let ii = 0; ii < liElements.length; ii++) {
+            let element = liElements[ii];
+
+            element.addEventListener('click', function(e) {
+                deactivate();
+                e.target.classList.add('active');
+            });
+        }
+
+    </script>
+</body>
+</html>
